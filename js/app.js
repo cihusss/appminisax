@@ -61,6 +61,7 @@ const generateTune = (t) => {
 
 playTune = (e) => {
 
+    document.getElementById("tempo-overlay").style.display = "block";
     document.getElementById("btn-play").style.display = "none";
     document.getElementById("btn-stop").style.display = "block";
 
@@ -78,6 +79,7 @@ playTune = (e) => {
     }
 
     setTimeout(function(){
+        document.getElementById("tempo-overlay").style.display = "none";
         document.getElementById("btn-play").style.display = "block";
         document.getElementById("btn-stop").style.display = "none";
         console.log("timeout " + end * 1000);

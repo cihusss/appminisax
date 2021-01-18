@@ -19,6 +19,7 @@ body { display: flex; align-items: center; justify-content: space-evenly; flex-d
 #tempo-wrap {
 	display: flex;
 	flex-direction: row;
+	position: relative;
 }
 
 .tempo {
@@ -34,8 +35,18 @@ body { display: flex; align-items: center; justify-content: space-evenly; flex-d
 	cursor: pointer;
 }
 
+#tempo-overlay {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255, 0.5);
+}
+
 .active {
-	color: #333;
+	color: #000;
 }
 
 #btn-stop {
