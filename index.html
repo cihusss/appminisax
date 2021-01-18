@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>app.minisax</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/soundplayer.js"></script>
+</head>
+<body>
+	<div id="piano">
+		<div data-frequency="261.626" data-note="C4">
+		  <div data-frequency="277.18" data-note="C4s"></div>
+		</div>
+		<div data-frequency="293.665" data-note="D4">
+		  <div data-frequency="311.127" data-note="D4s"></div>
+		</div>
+		<div data-frequency="329.628" data-note="E4"></div>
+		<div data-frequency="349.228" data-note="F4">
+		  <div data-frequency="369.994" data-note="F4s"></div>
+		</div>
+		<div data-frequency="391.995" data-note="G4">
+		  <div data-frequency="415.305" data-note="G4s"></div>
+		</div>
+		<div data-frequency="440.000" data-note="A4">
+		  <div data-frequency="466.164" data-note="A4s"></div>
+		</div>
+		<div data-frequency="493.883" data-note="B4"></div>
+		<div data-frequency="523.251" data-note="C5"></div>
+	</div>
+	<div id="controls">
+		<i class="material-icons md-large" id="btn-play">play_circle_outline</i>
+		<i class="material-icons md-large" id="btn-stop">stop_circle</i>
+	</div>
+	<div id="tempo-wrap">
+		<span class="tempo" data-tempo="4">Super Slow</span>
+		<span class="tempo" data-tempo="2">Slow</span>
+		<span class="tempo" id="default-tempo" data-tempo="1">Normal</span>
+	</div>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
