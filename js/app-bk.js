@@ -79,7 +79,6 @@ const generateTune = (t) => {
 playTune = (e) => {
 
     document.getElementById("tempo-overlay").style.display = "block";
-    document.getElementById("input-overlay").style.display = "block";
     document.getElementById("btn-play").style.display = "none";
     document.getElementById("btn-stop").style.display = "block";
 
@@ -121,7 +120,7 @@ playTune = (e) => {
                 }
             }
             setTimeout(function(){display.innerHTML = tune[note][0]}, tune[note][2] * 1000);
-            setTimeout(function(){display.innerHTML = "&bull;"}, tune[note][3] * 1000 - 1);
+            setTimeout(function(){display.innerHTML = "&mdash;"}, tune[note][3] * 1000 - 1);
         };
         (new SoundPlayer(audio, compressor)).play(tune[note][1], 1, "sine", tune[note][2]).stop(tune[note][3]);
         tracker.push(audio);
@@ -129,7 +128,6 @@ playTune = (e) => {
 
     setTimeout(function(){
         document.getElementById("tempo-overlay").style.display = "none";
-        document.getElementById("input-overlay").style.display = "none";
         document.getElementById("btn-play").style.display = "block";
         document.getElementById("btn-stop").style.display = "none";
         console.log("timeout " + end * 1000);
@@ -150,17 +148,31 @@ document.getElementById("btn-stop").addEventListener("click", stopTune);
 
 let tempoButtons = document.getElementsByClassName("tempo");
 
-// for (let i = 0; i < tempoButtons.length; i++) {
-//     ele = document.getElementsByClassName("tempo")[i].addEventListener("click", function() {
-//         tempo = this.getAttribute("data-tempo");
-//         for (let i = 0; i < tempoButtons.length; i++) {
-//             document.getElementsByClassName("tempo")[i].classList.remove('active');
-//         }
-//         this.classList.add('active');
-//         console.log("Tempo: " + tempo);
-//         generateTune(tunes.hpbd);
-//     });
-// }
+setup = (e) => {
+    // for (let i = 0; i < tempoButtons.length; i++) {
+    //     ele = document.getElementsByClassName("tempo")[i].addEventListener("click", function() {
+    //         tempo = this.getAttribute("data-tempo");
+    //         for (let i = 0; i < tempoButtons.length; i++) {
+    //             document.getElementsByClassName("tempo")[i].classList.remove('active');
+    //         }
+    //         this.classList.add('active');
+    //         console.log("Tempo: " + tempo);
+    //         generateTune(tunes.selectedTune);
+    //     });
+    // }
+};
+
+for (let i = 0; i < tempoButtons.length; i++) {
+    ele = document.getElementsByClassName("tempo")[i].addEventListener("click", function() {
+        tempo = this.getAttribute("data-tempo");
+        for (let i = 0; i < tempoButtons.length; i++) {
+            document.getElementsByClassName("tempo")[i].classList.remove('active');
+        }
+        this.classList.add('active');
+        console.log("Tempo: " + tempo);
+        generateTune(tunes.hpbd);
+    });
+}
 
 function eventFire(el, etype){
     if (el.fireEvent) {
@@ -180,22 +192,8 @@ const selectTune = () => {
 
 document.getElementById("tunes-selector").addEventListener("change", selectTune);
 
-setup = (e) => {
-    for (let i = 0; i < tempoButtons.length; i++) {
-        ele = document.getElementsByClassName("tempo")[i].addEventListener("click", function() {
-            tempo = this.getAttribute("data-tempo");
-            for (let i = 0; i < tempoButtons.length; i++) {
-                document.getElementsByClassName("tempo")[i].classList.remove('active');
-            }
-            this.classList.add('active');
-            console.log("Tempo: " + tempo);
-            generateTune(tunes[selectedTune]);
-        });
-    }
-};
-
-setup();
 eventFire(document.getElementById("default-tempo"), "click");
+setup();
 
 // generateTune(hpbd);
 // console.log(tune);
